@@ -1,7 +1,11 @@
 FROM eclipse-temurin:21-jdk-alpine
 VOLUME /tmp
-COPY *.jar nequi_techlead_technical_test_ms.jar
-ENV JAVA_OPTS=" -Xshareclasses:name=cacheapp,cacheDir=/cache,nonfatal -XX:+UseContainerSupport -XX:MaxRAMPercentage=70 -Djava.security.egd=file:/dev/./urandom"
-# Replace with a non-root user to avoid running the container with excessive privileges
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+COPY /applications/app-service/build/libs/nequi_techlead_technical_test_ms.jar nequi_techlead_technical_test_ms.jar
+
+ENV JAVA_OPTS="-XX:MaxRAMPercentage=70 -Djava.security.egd=file:/dev/./urandom"
+
 USER appuser
-ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS  -jar nequi_techlead_technical_test_ms.jar" ]
+
+ENTRYPOINT ["sh","-c","java $JAVA_OPTS -jar nequi_techlead_technical_test_ms.jar"]
