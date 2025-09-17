@@ -25,10 +25,9 @@ public class GetTopProductByBranchUseCase {
                 .concatMap(this::topForBranch);
     }
 
-
     private Mono<Franchise> checkExistsFranchise(String franchiseId) {
         return franchiseGateway.getFranchiseById(franchiseId)
-                .switchIfEmpty(Mono.error(BusinessType.NO_FRANCHISE_FOUND.build(franchiseId)));
+                .switchIfEmpty(Mono.defer(() ->Mono.error(BusinessType.NO_FRANCHISE_FOUND.build(franchiseId))));
     }
 
     private Flux<Branch> extractBranches(Franchise franchise) {

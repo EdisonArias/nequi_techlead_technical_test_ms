@@ -3,8 +3,6 @@ package co.com.nequi.teachlead.technical.test.api.handler.branch;
 import co.com.nequi.teachlead.technical.test.api.controller.branch.create.CreateBranchController;
 import co.com.nequi.teachlead.technical.test.api.controller.branch.get.GetBranchesController;
 import co.com.nequi.teachlead.technical.test.api.controller.branch.update.UpdateBranchController;
-import co.com.nequi.teachlead.technical.test.api.controller.franchise.get.GetFranchisesController;
-import co.com.nequi.teachlead.technical.test.api.controller.franchise.update.UpdateFranchiseController;
 import co.com.nequi.teachlead.technical.test.api.shared.enums.Headers;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

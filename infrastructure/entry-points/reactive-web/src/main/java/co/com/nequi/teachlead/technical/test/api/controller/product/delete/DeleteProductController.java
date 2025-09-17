@@ -25,7 +25,7 @@ public class DeleteProductController {
         validateRequest.requireFranchiseId(productId);
 
         return this.deleteProductUseCase.execute(productId)
-                .thenReturn(Response.build(productId, null))
+                .thenReturn(Response.build(null))
                 .flatMap(response -> ServerResponse.ok().bodyValue(response));
     }
 }

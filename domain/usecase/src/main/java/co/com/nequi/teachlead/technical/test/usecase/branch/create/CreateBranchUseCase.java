@@ -38,7 +38,7 @@ public class CreateBranchUseCase {
 
     private Mono<Franchise> checkFranchiseExists(String franchiseId) {
         return franchiseGateway.getFranchiseById(franchiseId)
-                .switchIfEmpty(Mono.error(BusinessType.NO_FRANCHISE_FOUND.build(franchiseId)));
+                .switchIfEmpty(Mono.defer(() ->Mono.error(BusinessType.NO_FRANCHISE_FOUND.build(franchiseId))));
     }
 
     private Branch buildBranch(Branch info) {

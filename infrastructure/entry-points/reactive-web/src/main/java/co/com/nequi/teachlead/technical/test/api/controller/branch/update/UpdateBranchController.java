@@ -32,7 +32,7 @@ public class UpdateBranchController {
                 .switchIfEmpty(Mono.error(BusinessType.BAD_REQUEST.build()))
                 .map(branchMapper::toEntity)
                 .flatMap(newBranchName -> updateBranchUseCase.execute(newBranchName,branchId))
-                .map(franchise -> Response.build(branchId, franchise))
+                .map(Response::build)
                 .flatMap(ServerResponse.ok()::bodyValue);
     }
 

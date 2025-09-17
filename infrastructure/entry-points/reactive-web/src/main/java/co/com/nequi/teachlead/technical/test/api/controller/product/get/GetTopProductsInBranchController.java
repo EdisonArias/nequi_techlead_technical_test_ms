@@ -29,7 +29,7 @@ public class GetTopProductsInBranchController {
 
         return getTopProductByBranchUseCase.execute(franchiseId)
                 .collectList()
-                .flatMap(brands -> ServerResponse.ok().bodyValue(Response.build(franchiseId, brands)))
+                .flatMap(brands -> ServerResponse.ok().bodyValue(Response.build(brands)))
                 .doOnSuccess(response -> log.info(MESSAGE_GET_TOP_PRODUCTS_SUCCESS, response));
     }
 }

@@ -38,7 +38,7 @@ public class CreateProductUseCase {
 
     private Mono<Branch> checkBranchExists(String branchId) {
         return branchGateway.getBranchById(branchId)
-                .switchIfEmpty(Mono.error(BusinessType.NO_BRANCH_FOUND.build(branchId)));
+                .switchIfEmpty(Mono.defer(() ->Mono.error(BusinessType.NO_BRANCH_FOUND.build(branchId))));
     }
 
     private Product buildProduct(Product data) {

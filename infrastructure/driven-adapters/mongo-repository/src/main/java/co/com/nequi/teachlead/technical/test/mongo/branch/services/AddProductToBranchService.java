@@ -1,17 +1,13 @@
 package co.com.nequi.teachlead.technical.test.mongo.branch.services;
 
 import co.com.nequi.teachlead.technical.test.model.branch.Branch;
-import co.com.nequi.teachlead.technical.test.model.branch.BranchToFranchise;
 import co.com.nequi.teachlead.technical.test.model.branch.services.AddProductBranchService;
-import co.com.nequi.teachlead.technical.test.model.franchise.Franchise;
-import co.com.nequi.teachlead.technical.test.model.franchise.services.AddBranchesFranchiseService;
 import co.com.nequi.teachlead.technical.test.model.product.Product;
 import co.com.nequi.teachlead.technical.test.model.product.ProductToBranch;
 import co.com.nequi.teachlead.technical.test.model.shared.exception.BusinessException;
 import co.com.nequi.teachlead.technical.test.model.shared.exception.BusinessType;
 import co.com.nequi.teachlead.technical.test.model.shared.exception.TechnicalType;
 import co.com.nequi.teachlead.technical.test.mongo.branch.document.BranchDocument;
-import co.com.nequi.teachlead.technical.test.mongo.franchise.document.FranchiseDocument;
 import lombok.RequiredArgsConstructor;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;

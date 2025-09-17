@@ -2,7 +2,6 @@ package co.com.nequi.teachlead.technical.test.api.controller.branch.create.mappe
 
 import co.com.nequi.teachlead.technical.test.api.controller.franchise.create.request.CreateAndUpdateFranchise;
 import co.com.nequi.teachlead.technical.test.model.branch.Branch;
-import co.com.nequi.teachlead.technical.test.model.franchise.Franchise;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

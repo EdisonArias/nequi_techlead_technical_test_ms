@@ -43,7 +43,7 @@ public class GlobalExceptionHandler extends AbstractErrorWebExceptionHandler {
         String messageId = request.headers().firstHeader(Headers.MESSAGE_ID.getName());
         int status = resolveHttpStatus(t);
 
-        Response<String> body = buildBody(t, messageId, status);
+        Response<String> body = buildBody(t, status);
 
         log.error("{}, type: {} , messageId: {} , cause: {} :: ",
                 t.getClass().getSimpleName(),
@@ -65,7 +65,7 @@ public class GlobalExceptionHandler extends AbstractErrorWebExceptionHandler {
         };
     }
 
-    private Response<String> buildBody(Throwable t, String messageId, int status) {
+    private Response<String> buildBody(Throwable t, int status) {
         String code;
         String message;
 
@@ -77,6 +77,6 @@ public class GlobalExceptionHandler extends AbstractErrorWebExceptionHandler {
             message = TechnicalType.INTERNAL_SERVER_ERROR.getMessage();
         }
 
-        return Response.build(messageId, code, message, null);
+        return Response.build(code, message, null);
     }
 }

@@ -2,6 +2,8 @@ package co.com.nequi.teachlead.technical.test.mongo.franchise.services;
 
 import co.com.nequi.teachlead.technical.test.model.franchise.BranchTopProduct;
 import co.com.nequi.teachlead.technical.test.model.franchise.gateway.ProductTopBranchGateway;
+import co.com.nequi.teachlead.technical.test.mongo.franchise.helper.BranchTopProductProjection;
+import co.com.nequi.teachlead.technical.test.mongo.franchise.mapper.BranchTopProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Sort;
@@ -32,9 +34,9 @@ public class TopProductByBranchMongoService implements ProductTopBranchGateway {
                 projectFields()
         );
 
-        return mongo.aggregate(pipeline, COLLECTION, BranchTopProductDoc.class)
+        return mongo.aggregate(pipeline, COLLECTION, BranchTopProductProjection.class)
                 .next()
-                .map(BranchTopProductDoc::toDomain);
+                .map(BranchTopProductMapper::toDomain);
     }
 
     private ProjectionOperation projectFields() {
@@ -44,24 +46,5 @@ public class TopProductByBranchMongoService implements ProductTopBranchGateway {
                 .and("products._id").as("productId")
                 .and("products.name").as("productName")
                 .and("products.stock").as("stock");
-    }
-
-    @lombok.Data
-    static class BranchTopProductDoc {
-        private ObjectId branchId;
-        private String branchName;
-        private ObjectId productId;
-        private String productName;
-        private Integer stock;
-
-        BranchTopProduct toDomain() {
-            return BranchTopProduct.builder()
-                    .branchId(branchId != null ? branchId.toHexString() : null)
-                    .branchName(branchName)
-                    .productId(productId != null ? productId.toHexString() : null)
-                    .productName(productName)
-                    .stock(stock)
-                    .build();
-        }
     }
 }

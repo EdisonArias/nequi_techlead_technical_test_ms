@@ -36,7 +36,7 @@ public class UpdateProductNameController {
                 })
                 .map(productNameMapper::toEntity)
                 .flatMap(product -> updateProductNameUseCase.execute(product,productId))
-                .map(franchise -> Response.build(productId, franchise))
+                .map(Response::build)
                 .flatMap(ServerResponse.ok()::bodyValue);
     }
 

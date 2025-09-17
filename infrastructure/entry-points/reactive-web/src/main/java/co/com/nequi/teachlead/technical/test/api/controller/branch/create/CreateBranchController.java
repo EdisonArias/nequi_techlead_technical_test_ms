@@ -32,7 +32,7 @@ public class CreateBranchController {
                 .switchIfEmpty(Mono.error(BusinessType.BAD_REQUEST.build()))
                 .map(branchMapper::toEntity)
                 .flatMap(branch -> createBranchUseCase.execute(franchiseId,branch))
-                .map(franchise -> Response.build(franchiseId, franchise))
+                .map(Response::build)
                 .flatMap(ServerResponse.ok()::bodyValue);
     }
 

@@ -1,6 +1,5 @@
 package co.com.nequi.teachlead.technical.test.api.controller.product.get;
 
-import co.com.nequi.teachlead.technical.test.api.shared.enums.Headers;
 import co.com.nequi.teachlead.technical.test.api.shared.response.Response;
 import co.com.nequi.teachlead.technical.test.api.shared.util.ValidateRequest;
 import co.com.nequi.teachlead.technical.test.usecase.product.get.GetProductsUseCase;
@@ -16,18 +15,15 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class GetProductsController {
 
-    private final ValidateRequest validateRequest;
     private final GetProductsUseCase getProductsUseCase;
 
-    private static final String MESSAGE_GET_PRODUCTS_SUCCESS = "Successfully retrieved products {}";
+    private static final String MESSAGE_GET_PRODUCTS_SUCCESS = "Successfully retrieved products {}: {}";
 
     public Mono<ServerResponse> execute(ServerRequest serverRequest) {
-        String messageId = serverRequest.headers().firstHeader(Headers.MESSAGE_ID.getName());
-        validateRequest.requireMessageId(messageId);
-
         return getProductsUseCase.execute()
                 .collectList()
-                .flatMap(brands -> ServerResponse.ok().bodyValue(Response.build(messageId, brands)))
-                .doOnSuccess(response -> log.info(MESSAGE_GET_PRODUCTS_SUCCESS, response));
+                .flatMap(brands -> ServerResponse.ok().bodyValue(Response.build(brands)))
+                .doOnSuccess(response -> log.info(MESSAGE_GET_PRODUCTS_SUCCESS, response,
+                        serverRequest.path()));
     }
 }

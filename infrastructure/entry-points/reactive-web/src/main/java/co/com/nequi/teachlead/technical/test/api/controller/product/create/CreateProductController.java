@@ -36,7 +36,7 @@ public class CreateProductController {
                 })
                 .map(productMapper::toEntity)
                 .flatMap(product -> createProductUseCase.execute(branchId,product))
-                .map(franchise -> Response.build(branchId, franchise))
+                .map(Response::build)
                 .flatMap(ServerResponse.ok()::bodyValue);
     }
 

@@ -2,9 +2,7 @@ package co.com.nequi.teachlead.technical.test.mongo.branch.repositories;
 
 import co.com.nequi.teachlead.technical.test.model.branch.Branch;
 import co.com.nequi.teachlead.technical.test.model.branch.gateway.BranchGateway;
-import co.com.nequi.teachlead.technical.test.model.franchise.Franchise;
 import co.com.nequi.teachlead.technical.test.mongo.branch.document.BranchDocument;
-import co.com.nequi.teachlead.technical.test.mongo.franchise.document.FranchiseDocument;
 import co.com.nequi.teachlead.technical.test.mongo.helper.AdapterOperations;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.data.domain.Sort;
