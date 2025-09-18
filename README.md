@@ -418,7 +418,7 @@ El reporte estará disponible en: build/reports/jacoco/test/html/index.html
 ## 10. Tecnologías utilizadas
 
 * **Java 21** - Plataforma de desarrollo principal
-* **Spring Boot 3.3.11** - Framework de aplicación con WebFlux para programación reactiva
+* **Spring Boot 3.5.4** - Framework de aplicación con WebFlux para programación reactiva
 * **Spring WebFlux** - Stack reactivo no bloqueante
 * **MongoDB** - Base de datos NoSQL para persistencia
 * **Reactor** - Biblioteca de programación reactiva
