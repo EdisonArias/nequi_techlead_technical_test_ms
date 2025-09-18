@@ -13,7 +13,7 @@ spring:
     include: null
   data:
     mongodb:
-      uri: "SPRING_DATA_MONGODB_URI:mongodb://admin:SuperSecreta123@localhost:27017/technicalTest?authSource=admin&directConnection=true&serverSelectionTimeoutMS=2000"
+      uri: "${SPRING_DATA_MONGODB_URI:mongodb://admin:SuperSecreta123@localhost:27017/technicalTest?authSource=admin&directConnection=true&serverSelectionTimeoutMS=2000}"
 aws:
   dynamodb:
     endpoint: "http://localhost:8000"
